@@ -1,0 +1,42 @@
+/* .imagebox_wrp {
+  position: relative;
+  overflow: hidden;
+} */
+/* 
+.ticker_wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 30px;
+  width: 100%;
+  background-color: black;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+} */
+
+/* .product_box:hover .ticker_wrap {
+  opacity: 1;
+} */
+
+/* .ticker_inside {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee 10s linear infinite;
+} */
+/* 
+.ticker_inside span {
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  margin-right: 2rem;
+} */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
