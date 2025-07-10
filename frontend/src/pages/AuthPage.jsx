@@ -107,7 +107,7 @@ const AuthPage = () => {
       });
       console.log(response)
       const data = await response.json();
-
+      console.log("???????????????????????",data)
       if (response.ok) {
         showMessage('success', 'Registration successful! Please sign in.');
         setRegisterData({
@@ -123,11 +123,11 @@ const AuthPage = () => {
           setIsLogin(true);
         }, 2000);
       } else {
-        
+        console.log("sdfghjkl;..................",response)
         showMessage('error', data.message || 'Registration failed. Please try again.');
       }
     } catch (error) {
-        console.log(error)
+        console.log(error);
         showMessage('error', 'Network error. Please check your connection.');
     } finally {
         setLoading(false);

@@ -113,7 +113,7 @@ const ProfilePage = () => {
         body: formData1,
       });
       // console.log(response)
-      if (response) {
+      if (response.ok) {
         const updatedData = await response.json();
         console.log("RESPONSE.................",updatedData);
         console.log(profile,updatedData.user.profile_image_url)

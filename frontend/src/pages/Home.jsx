@@ -1,8 +1,8 @@
 import React from 'react'
 import banner_image from '../assets/images/banner_image.jpg'
-import ShopByCategory from '../components/Homepage/ShopByCategory'
-import NewInItems from '../components/Homepage/NewInItems'
-import ClosetSection from '../components/Homepage/ClosetSection'
+import ShopByCategory from '../components/core/Homepage/ShopByCategory'
+import NewInItems from '../components/core/Homepage/NewInItems'
+import ClosetSection from '../components/core/Homepage/ClosetSection'
 
 const Home = () => {
     

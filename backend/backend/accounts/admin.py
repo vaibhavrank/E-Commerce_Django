@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User, Category, Color, Size, Product, ProductVariant, Order, OrderItem, Payment, ProductImage
+from .models import User, Category, Color, Size, Invoice, ProductVariant, Order, OrderItem, Payment, ProductImage
 
 # Register your models here.
 
@@ -41,27 +41,40 @@ class ProductVariantInline(admin.TabularInline):
     model = ProductVariant
     extra = 1  # Number of empty forms to display
 
-@admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category', 'base_price', 'created_at')
-    search_fields = ('name', 'description')
-    list_filter = ('category', 'created_at')
-    # Add ProductImageInline here
-    inlines = [ProductImageInline, ProductVariantInline]
+# Inline OrderItems for Orders
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    readonly_fields = ('product_name', 'size_name', 'color_name', 'price_at_purchase')
+    extra = 0
+
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'total_amount', 'is_paid', 'created_at')
-    list_filter = ('is_paid', 'created_at')
-    search_fields = ('user__email',)
+    list_display = ('id', 'user', 'status', 'total_amount', 'is_paid', 'created_at')
+    list_filter = ('status', 'is_paid', 'created_at')
+    search_fields = ('user__email', 'id', 'coupon_code')
+    readonly_fields = ('subtotal_amount', 'discount_amount', 'gst_percentage', 'gst_amount', 'total_amount')
+    inlines = [OrderItemInline]
+    ordering = ('-created_at',)
+
 
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
-    list_display = ('order', 'product', 'quantity', 'price')
-    search_fields = ('order__id', 'product__name')
+    list_display = ('id', 'order', 'product_name', 'size_name', 'color_name', 'quantity', 'price_at_purchase')
+    list_filter = ('size_name', 'color_name')
+    search_fields = ('product_name', 'order__id')
+
 
 @admin.register(Payment)
 class PaymentAdmin(admin.ModelAdmin):
-    list_display = ('order', 'method', 'status', 'created_at')
-    list_filter = ('method', 'status', 'created_at')
-    search_fields = ('order__id', 'payment_id')
+    list_display = ('id', 'order', 'method', 'transaction_id', 'status', 'amount_paid', 'created_at')
+    list_filter = ('status', 'method', 'created_at')
+    search_fields = ('order__id', 'transaction_id')
+    readonly_fields = ('created_at', 'updated_at')
+
+
+@admin.register(Invoice)
+class InvoiceAdmin(admin.ModelAdmin):
+    list_display = ('id', 'order', 'invoice_number', 'generated_at')
+    search_fields = ('invoice_number', 'order__id')
+    readonly_fields = ('invoice_number', 'generated_at')

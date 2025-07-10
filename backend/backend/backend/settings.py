@@ -15,6 +15,7 @@ from datetime import timedelta
 import os
 from dotenv import load_dotenv
 from decouple import config
+import cloudinary
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -45,7 +46,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'cloudinary',
     'cloudinary_storage',
-    'accounts'
+    'accounts',
+    'administration'
 ]
 
 
@@ -165,6 +167,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Or, restrict:
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://e-commerce-django-hmorhdeny-vaibhav-ranks-projects.vercel.app"
 ]
 
 # Email configurations 
@@ -186,3 +189,15 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ],
 }
+
+
+# for payment integration
+RAZORPAY_KEY_ID = config('RAZORPAY_KEY_ID')
+RAZORPAY_KEY_SECRET = config('RAZORPAY_KEY_SECRET')
+
+# For webhooks (optional, but highly recommended for production)
+RAZORPAY_WEBHOOK_SECRET = config('RAZORPAY_WEBHOOK_SECRET') # Create a strong secret on Razorpay dashboard
+
+load_dotenv()  # Load .env variables
+
+cloudinary.config()

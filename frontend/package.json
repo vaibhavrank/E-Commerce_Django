@@ -10,17 +10,22 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@chakra-ui/react": "^3.21.0",
+    "@chakra-ui/toast": "^7.0.2",
     "@reduxjs/toolkit": "^2.8.2",
     "@tailwindcss/vite": "^4.1.8",
     "axios": "^1.9.0",
+    "dotenv": "^16.5.0",
     "lucide-react": "^0.513.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icon": "^1.0.0",
     "react-icons": "^5.5.0",
+    "react-razorpay": "^3.0.1",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.6.2",
     "react-swiper": "^0.1.5",
+    "react-toast": "^1.0.3",
     "swiper": "^11.2.8"
   },
   "devDependencies": {
