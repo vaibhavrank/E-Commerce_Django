@@ -167,8 +167,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Or, restrict:
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    'localhost',
+    '127.0.0.1',
+    'e-commerce-django-m8nd.onrender.com',
     "https://e-commerce-django-hmorhdeny-vaibhav-ranks-projects.vercel.app",
-    "https://e-commerce-django-git-main-vaibhav-ranks-projects.vercel.app "
+    "https://e-commerce-django-git-main-vaibhav-ranks-projects.vercel.app ",
+    "https://e-commerce-django-green.vercel.app"
 ]
 
 # Email configurations 
