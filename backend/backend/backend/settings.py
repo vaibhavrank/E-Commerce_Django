@@ -162,6 +162,12 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+    "e-commerce-django-m8nd.onrender.com",
+]
+
 
 # CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
