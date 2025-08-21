@@ -164,16 +164,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # CORS_ALLOW_ALL_ORIGINS = True
-# Or, restrict:
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    'localhost',
-    '127.0.0.1',
-    'e-commerce-django-m8nd.onrender.com',
+
+    "http://127.0.0.1:5173",  # specify port if using Vite or React dev server
+    "https://e-commerce-django-m8nd.onrender.com",
     "https://e-commerce-django-hmorhdeny-vaibhav-ranks-projects.vercel.app",
-    "https://e-commerce-django-git-main-vaibhav-ranks-projects.vercel.app ",
+    "https://e-commerce-django-git-main-vaibhav-ranks-projects.vercel.app",
     "https://e-commerce-django-green.vercel.app"
 ]
+
 
 # Email configurations 
 EMAIL_BACKEND = config('EMAIL_BACKEND')
