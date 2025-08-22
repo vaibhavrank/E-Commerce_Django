@@ -13,6 +13,7 @@ const AuthPage = () => {
   const [profileImageName, setProfileImageName] = useState('');
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   const [loginData, setLoginData] = useState({
     email: '',
@@ -101,7 +102,7 @@ const AuthPage = () => {
 
     try {
         console.log("FORMDATA: ",registerData);
-      const response = await fetch('http://localhost:8000/api/auth/register/', {
+      const response = await fetch(`${BASE_URL}/api/auth/register/`, {
         method: 'POST',
         body: formData
       });

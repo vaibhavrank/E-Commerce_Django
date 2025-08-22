@@ -10,6 +10,7 @@ export const useShopData = () => {
   const [availableCategories, setAvailableCategories] = useState([]);
   const [availableColors, setAvailableColors] = useState([]);
   const [availableSizes, setAvailableSizes] = useState([]);
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   const [selectedFilters, setSelectedFilters] = useState({
     categories: [],
@@ -36,7 +37,7 @@ export const useShopData = () => {
     selectedFilters.sizes.forEach(sz => params.append('sizes', sz));
     if (sortBy) params.append('sort_by', sortBy);
     params.append('page', currentPage);
-    return `http://localhost:8000/api/auth/products?${params.toString()}`;
+    return `${BASE_URL}/api/auth/products?${params.toString()}`;
   }, [selectedFilters, sortBy, currentPage]);
 
   useEffect(() => {

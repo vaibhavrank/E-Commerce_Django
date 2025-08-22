@@ -9,11 +9,12 @@ const Orders = () => {
     const [Orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
 
     useEffect(() => {
         const fetchOrders = async () => {
         try {
-            const response = await fetch('http://localhost:8000/api/auth/orders/my', {
+            const response = await fetch(`${BASE_URL}/api/auth/orders/my`, {
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
                 'Content-Type': 'application/json'

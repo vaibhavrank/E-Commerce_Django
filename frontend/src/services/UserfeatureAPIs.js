@@ -4,8 +4,7 @@ import { clearCart } from './slices/cartSlice'; // To clear cart after successfu
 import { createStandaloneToast } from '@chakra-ui/toast'   // Assuming you use Chakra UI for toasts
 // If not using Chakra UI, replace with your preferred notification system (e.g., react-toastify)
 const { toast } = createStandaloneToast(); 
-
-const API_BASE_URL = 'http://localhost:8000/api/auth'; // Your Django backend URL
+const API_BASE_URL = import.meta.env.VITE_BASE_URL+'/api/auth';
 
 // Function to dynamically load the Razorpay script
 const loadRazorpayScript = () => {

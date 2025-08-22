@@ -23,7 +23,9 @@ const Demo = () => {
     const fetchProduct = async () => {
       try {
         // Simulate API call delay 
-        const rr =await fetch(`http://localhost:8000/api/auth/products/${id}`);
+        const BASE_URL = import.meta.env.VITE_BASE_URL;
+
+        const rr =await fetch(`${BASE_URL}/api/auth/products/${id}`);
         const response = await rr.json();
         console.log(response);
         setProduct( response.product);

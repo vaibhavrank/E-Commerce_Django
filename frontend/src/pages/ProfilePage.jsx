@@ -10,6 +10,7 @@ const ProfilePage = () => {
   const [updateLoading, setUpdateLoading] = useState({});
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   // Mock access token - in real app, get from Redux store
   const {accessToken} = useSelector((state)=>state.auth);
@@ -21,7 +22,7 @@ const ProfilePage = () => {
   const fetchProfile = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:8000/api/auth/profile/', {
+      const response = await fetch(`${BASE_URL}/api/auth/profile/`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${accessToken}`,
@@ -70,7 +71,7 @@ const ProfilePage = () => {
         [field]: editValues[field]
       };
 
-      const response = await fetch('http://localhost:8000/api/auth/profile/update/', {
+      const response = await fetch(`${BASE_URL}/api/auth/profile/update/`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${accessToken}`,
@@ -105,7 +106,7 @@ const ProfilePage = () => {
       
       const formData1 = new FormData();
       formData1.append('profile_image', file);
-      const response = await fetch('http://localhost:8000/api/auth/profile/update/', {
+      const response = await fetch(`${BASE_URL}/api/auth/profile/update/`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${accessToken}`,
